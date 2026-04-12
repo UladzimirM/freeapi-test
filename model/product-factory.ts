@@ -1,11 +1,10 @@
-import {faker} from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 import 'dotenv/config';
 
-import {User} from '../interfaces/user';
-import {Product} from "../interfaces/product";
+import { Product } from '../interfaces/product';
 
 export class ProductFactory {
-  static getRandomValidCategory(){
+  static getRandomValidCategory() {
     return faker.commerce.product();
   }
 
@@ -14,10 +13,9 @@ export class ProductFactory {
       name: faker.commerce.productName(),
       category: process.env.categoryId,
       description: faker.commerce.productDescription(),
-      price: faker.number.int({min:10, max:100}).toString(),
-      stock: faker.number.int({min:1, max:10}).toString(),
+      price: faker.number.int({ min: 10, max: 100 }).toString(),
+      stock: faker.number.int({ min: 1, max: 10 }).toString(),
       mainImage: 'data/img.png',
     };
   }
 }
-

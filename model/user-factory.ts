@@ -1,7 +1,7 @@
-import {faker} from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 import 'dotenv/config';
 
-import {User} from '../interfaces/user';
+import { User } from '../interfaces/user';
 
 export class UserFactory {
   static getRandomValidUser(): User {
@@ -9,7 +9,7 @@ export class UserFactory {
       username: faker.person.fullName().toLowerCase(),
       email: faker.internet.email(),
       password: faker.internet.password(),
-      role: 'ADMIN'
+      role: 'ADMIN',
     };
   }
 }

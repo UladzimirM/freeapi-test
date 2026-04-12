@@ -1,6 +1,6 @@
 export const url = {
   TEST: {
-    baseUrl: 'https://api.freeapi.app/api/v1/'
+    baseUrl: 'https://api.freeapi.app/api/v1/',
   },
 };
 
@@ -18,7 +18,5 @@ export const endpoints = {
     productById: (id: string) => `ecommerce/products/${id}`,
 
     categories: 'ecommerce/categories',
-  }
-
-
+  },
 };
