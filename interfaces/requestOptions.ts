@@ -3,5 +3,5 @@ export interface RequestOptions {
   headers?: { [key: string]: string };
   method: string;
   params?: { [key: string]: any };
-  multipart?: { [key: string]: any };
+  multipart?: { [key: string]: any } | FormData;
 }

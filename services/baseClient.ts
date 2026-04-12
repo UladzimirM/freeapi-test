@@ -15,11 +15,11 @@ export class BaseClient {
     const headers = apiResponse.headers();
     const contentType = headers['content-type'] || '';
 
-    let body: any = '';
+    let body: unknown;
     if (contentType.includes('application/json')) {
       try {
         body = await apiResponse.json();
-      } catch (e) {
+      } catch {
         body = '';
       }
     } else {
@@ -30,7 +30,7 @@ export class BaseClient {
       status: apiResponse.status(),
       statusText: apiResponse.statusText(),
       headers,
-      body,
+      body: body as Response['body'],
     };
     return response;
   }

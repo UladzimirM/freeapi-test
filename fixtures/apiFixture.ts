@@ -17,7 +17,7 @@ type Fixtures = {
 export const test = base.extend<Fixtures>({
   apiContext: async ({}, use) => {
     const context = await request.newContext({
-      baseURL: url[process.env.ENV].baseUrl,
+      baseURL: url[process.env.ENV as keyof typeof url].baseUrl,
     });
     await use(context);
     await context.dispose();
@@ -41,7 +41,7 @@ export const test = base.extend<Fixtures>({
 
   apiContextWithToken: async ({ accessToken }, use) => {
     const context = await request.newContext({
-      baseURL: url[process.env.ENV].baseUrl,
+      baseURL: url[process.env.ENV as keyof typeof url].baseUrl,
       extraHTTPHeaders: {
         Authorization: `Bearer ${accessToken}`,
       },

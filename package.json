@@ -16,8 +16,7 @@
     "@types/node": "^25.5.2",
     "ajv": "^8.18.0",
     "allure-playwright": "^3.7.1",
-    "dotenv": "^16.3.1",
-    "path": "^0.12.7"
+    "dotenv": "^16.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

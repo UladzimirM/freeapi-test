@@ -2,6 +2,7 @@ import { BaseClient } from './baseClient';
 import { endpoints } from '../config/url';
 import { expect } from '@playwright/test';
 import { Product } from '../interfaces/product';
+import { productToFormData } from '../utils/convertProductToFormData';
 
 export class EcommerceService {
   private baseClient: BaseClient;
@@ -21,9 +22,10 @@ export class EcommerceService {
   }
 
   async createProduct(product: Product): Promise<string> {
-    let response = await this.baseClient.sendRequest(endpoints.ecommerce.categories, {
+    const multipart = await productToFormData(product);
+    let response = await this.baseClient.sendRequest(endpoints.ecommerce.products, {
       method: 'POST',
-      data: product,
+      multipart,
       headers: {},
     });
     expect(response.status).toBe(201);

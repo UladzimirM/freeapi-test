@@ -3,7 +3,7 @@ import Ajv, { ErrorObject } from 'ajv';
 
 const ajv = new Ajv();
 
-export const validateSchema = async ({ schema, json }) => {
+export const validateSchema = async ({ schema, json }: { schema: object; json: unknown }) => {
   await test.step('Validating json schema', async () => {
     const validate = ajv.compile(schema);
 

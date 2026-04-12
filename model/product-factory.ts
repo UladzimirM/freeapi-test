@@ -11,7 +11,7 @@ export class ProductFactory {
   static getRandomValidProduct(): Product {
     return {
       name: faker.commerce.productName(),
-      category: process.env.categoryId,
+      category: process.env.categoryId ?? '',
       description: faker.commerce.productDescription(),
       price: faker.number.int({ min: 10, max: 100 }).toString(),
       stock: faker.number.int({ min: 1, max: 10 }).toString(),
