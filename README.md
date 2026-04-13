@@ -12,7 +12,7 @@ npm install
 echo "ENV=TEST" > .env
 
 # Run tests
-npm test
+npm run test
 ```
 
 ## 📝 Available Commands
@@ -22,8 +22,7 @@ npm test
 | `npm test` | Run all tests |
 | `npm run lint` | Check code quality |
 | `npm run format` | Format code with Prettier |
-| `npm run allure-generate` | Generate Allure report |
-| `npm run allure-open` | Open Allure report |
+| `npm run allure-report` | Generate and open Allure report |
 
 ### Run Specific Tests
 
