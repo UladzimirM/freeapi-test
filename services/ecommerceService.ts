@@ -1,6 +1,5 @@
 import { BaseClient } from './baseClient';
 import { endpoints } from '../config/url';
-import { expect } from '@playwright/test';
 import { Product } from '../interfaces/product';
 import { productToFormData } from '../utils/convertProductToFormData';
 
@@ -12,23 +11,39 @@ export class EcommerceService {
   }
 
   async createCategory(categoryName: string): Promise<string> {
-    let response = await this.baseClient.sendRequest(endpoints.ecommerce.categories, {
+    const response = await this.baseClient.sendRequest(endpoints.ecommerce.categories, {
       method: 'POST',
       data: { name: categoryName },
       headers: {},
     });
-    expect(response.status).toBe(201);
+
+    if (response.status !== 201) {
+      throw new Error(`Category creation failed with status ${response.status}: ${response.body.message || 'Unknown error'}`);
+    }
+
+    if (!response.body.data?._id) {
+      throw new Error('Category ID not found in response');
+    }
+
     return response.body.data._id;
   }
 
   async createProduct(product: Product): Promise<string> {
     const multipart = await productToFormData(product);
-    let response = await this.baseClient.sendRequest(endpoints.ecommerce.products, {
+    const response = await this.baseClient.sendRequest(endpoints.ecommerce.products, {
       method: 'POST',
       multipart,
       headers: {},
     });
-    expect(response.status).toBe(201);
+
+    if (response.status !== 201) {
+      throw new Error(`Product creation failed with status ${response.status}: ${response.body.message || 'Unknown error'}`);
+    }
+
+    if (!response.body.data?._id) {
+      throw new Error('Product ID not found in response');
+    }
+
     return response.body.data._id;
   }
 }

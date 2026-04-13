@@ -10,7 +10,7 @@ export class BaseClient {
   }
 
   async sendRequest(endpoint: string, options: RequestOptions) {
-    console.info(`Sending request ${endpoint} with  ${JSON.stringify(options)}`);
+    console.info(`Sending request ${endpoint} with ${JSON.stringify(options)}`);
     const apiResponse = await this.request.fetch(endpoint, options);
     const headers = apiResponse.headers();
     const contentType = headers['content-type'] || '';

@@ -51,7 +51,7 @@ test.describe('Products API', () => {
 
   test('Update products price', async ({ apiClientWithToken }) => {
     updatedProduct = JSON.parse(JSON.stringify(originalProduct));
-    updatedProduct.price = updatedProduct.price + 0;
+    updatedProduct.price = (Number(updatedProduct.price) + 10).toString();
     const response = await apiClientWithToken.sendRequest(endpoints.ecommerce.productById(productId), {
       method: 'PATCH',
       data: updatedProduct,
