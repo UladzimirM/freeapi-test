@@ -7,7 +7,7 @@ import * as fs from 'node:fs';
 import { validateSchema } from '../../utils/validateSchema';
 import { productResponseSchema, productsListResponseSchema } from '../../model/schemas/productSchemas';
 
-test.describe('Products API', () => {
+test.describe('Products API', { tag: '@products' }, () => {
   const productsPath = './data/receivedData/products.json';
   const originalProduct: Product = ProductFactory.getRandomValidProduct();
   let updatedProduct: Product;

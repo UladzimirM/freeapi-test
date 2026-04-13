@@ -6,7 +6,7 @@ import { productToFormData } from '../../../utils/convertProductToFormData';
 
 const originalProduct: Product = ProductFactory.getRandomValidProduct();
 
-test.describe('Negative create product test with invalid data', () => {
+test.describe('Negative create product test with invalid data', { tag: ['@products', '@negative'] }, () => {
   const productsSet = [
     {
       name: 'zero price',
@@ -53,7 +53,7 @@ test.describe('Negative create product test with invalid data', () => {
   });
 });
 
-test.describe('Negative create product test without token', () => {
+test.describe('Negative create product test without token', { tag: ['@products', '@negative'] }, () => {
   test('Create product', async ({ apiClient }) => {
     const formData = await productToFormData(originalProduct);
     const response = await apiClient.sendRequest(endpoints.ecommerce.products, {

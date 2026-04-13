@@ -6,7 +6,9 @@
   "scripts": {
     "test": "npx playwright test --config=config/playwright.config.ts",
     "lint": "eslint . --ext .ts",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "allure-generate": "npx allure generate allure-results",
+    "allure-open": "npx allure open allure-report"
   },
   "author": "Uladzimir Makarau",
   "license": "ISC",

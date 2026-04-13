@@ -3,7 +3,7 @@ import { endpoints } from '../../config/url';
 import { User } from '../../interfaces/user';
 import { UserFactory } from '../../model/user-factory';
 
-test.describe.serial('User API', () => {
+test.describe.serial('User API', { tag: '@users' }, () => {
   const validUser: User = UserFactory.getRandomValidUser();
   let accessToken: string;
 

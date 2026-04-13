@@ -3,7 +3,7 @@ import { endpoints } from '../../../config/url';
 
 const invalidProductId = 'invalidProductId';
 
-test('Get product by invalid id', async ({ apiClientWithToken }) => {
+test('Get product by invalid id', { tag: ['@products', '@negative'] }, async ({ apiClientWithToken }) => {
   const response = await apiClientWithToken.sendRequest(endpoints.ecommerce.productById(invalidProductId), {
     method: 'GET',
   });
